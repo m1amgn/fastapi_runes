@@ -53,14 +53,28 @@ def check_ett(number: int) -> int:
             return key
 
 
-def main():
-    day = 13
-    month = 3
-    year = 2024
+def find_ett(nums: list) -> int | None:
+    seen = set()
+    for num in nums:
+        if num in seen:
+            return int(num)
+        seen.add(num)
+    return None
 
-    second_name = "Медведев"
-    first_name = "Макар"
-    father_name = "Иванович"
+
+def runes_calculator(day: int, 
+                     month: int, 
+                     year: int, 
+                     first_name: str, 
+                     father_name: str, 
+                     second_name: str):
+    # day = 13
+    # month = 3
+    # year = 2024
+
+    # second_name = "Медведев"
+    # first_name = "Макар"
+    # father_name = "Иванович"
 
     number_of_day = calculate_date(day)
     ett_number_of_day = check_ett(number_of_day)
@@ -74,6 +88,13 @@ def main():
     sum_date = number_of_day + number_of_month + number_of_year
     sum_date_finish = calculate_date(sum_date)
     ett_sum_date_finish = check_ett(sum_date_finish)
+    
+    date_etts = [ett_number_of_day, ett_number_of_month, ett_number_of_year]
+    
+    date_ett = find_ett(date_etts)
+    
+    if date_ett == None:
+        date_ett = ett_sum_date_finish
 
     number_of_first_name = calculate_name(first_name)
     ett_number_of_first_name = check_ett(number_of_first_name)
@@ -87,7 +108,14 @@ def main():
     sum_name = number_of_first_name + number_of_father_name + number_of_second_name
     sum_name_finish = calculate_date(sum_name)
     ett_sum_name_finish = check_ett(sum_name_finish)
-
+    
+    name_etts = [ett_number_of_first_name, ett_number_of_father_name, ett_number_of_second_name]
+    
+    name_ett = find_ett(name_etts)
+    
+    if name_ett == None:
+        name_ett = ett_sum_name_finish
+    
     day_first_name = number_of_day + number_of_first_name
     day_first_name_finish = calculate_date(day_first_name)
     ett_day_first_name = check_ett(day_first_name_finish)
@@ -103,6 +131,13 @@ def main():
     sum_gold = sum_date_finish + sum_name_finish
     sum_gold_finish = calculate_date(sum_gold)
     ett_sum_gold_finish = check_ett(sum_gold_finish)
+    
+    gold_etts = [ett_day_first_name, ett_month_father_name, ett_year_second_name]
+    
+    gold_ett = find_ett(gold_etts)
+    
+    if gold_ett == None:
+        gold_ett = ett_sum_gold_finish
 
     print(
         f"Sum date: {sum_date_finish}, etts: {ett_number_of_day}-{ett_number_of_month}-{ett_number_of_year} | {ett_sum_date_finish}")
