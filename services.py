@@ -36,7 +36,7 @@ def calculate_name(name: str) -> int:
     return sum_of_numbers
 
 
-def check_ett(number: int) -> int:
+def check_ett(number: int) -> int | None:
     etts = {
         1: [1, 4, 7],
         2: [2, 5, 8],
@@ -51,6 +51,7 @@ def check_ett(number: int) -> int:
     for key, value in etts.items():
         if number in value:
             return key
+        return None
 
 
 def find_ett(nums: list) -> int | None:
@@ -68,13 +69,6 @@ def runes_calculator(day: int,
                      first_name: str, 
                      father_name: str, 
                      second_name: str):
-    # day = 13
-    # month = 3
-    # year = 2024
-
-    # second_name = "Медведев"
-    # first_name = "Макар"
-    # father_name = "Иванович"
 
     number_of_day = calculate_date(day)
     ett_number_of_day = check_ett(number_of_day)
