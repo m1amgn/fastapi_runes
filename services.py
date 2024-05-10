@@ -55,6 +55,9 @@ def check_ett(number: int) -> int | None:
             return None
 
 
+def check():
+    pass
+
 def find_ett(nums: list) -> int | None:
     seen = set()
     for num in nums:
