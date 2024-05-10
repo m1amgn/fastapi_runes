@@ -51,7 +51,8 @@ def check_ett(number: int) -> int | None:
     for key, value in etts.items():
         if number in value:
             return key
-        return None
+        else:
+            return None
 
 
 def find_ett(nums: list) -> int | None:
