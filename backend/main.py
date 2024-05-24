@@ -30,6 +30,7 @@ async def get_response():
 
 @app.post("/api_runes")
 async def read_item(data: Data):
-    runes = runes_calculator(data.day, data.month, data.year,
-                             data.first_name, data.father_name, data.second_name)
+    print(data)
+    runes = runes_calculator(data.birthday, data.birthmonth, data.birthyear,
+                             data.firstname, data.fathername, data.secondname)
     return runes
