@@ -7,12 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-origins = [
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-    'http://localhost:8080',
-    'http://127.0.0.1:8080',
-]
+origins = ['*']
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,9 +18,9 @@ app.add_middleware(
 )
 
 
-@app.get("/api_runes")
-async def get_response():
-    return 'Response'
+# @app.get("/api_runes")
+# async def get_response():
+#     return 'Response'
 
 
 @app.post("/api_runes")
