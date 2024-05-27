@@ -111,12 +111,7 @@ export default {
       }
     },
     getImagePath(imageName) {
-      try {
-        return new URL(`../assets/${imageName}.jpg`, import.meta.url).href;
-      } catch (error) {
-        console.error('Image not found:', imageName, error);
-        return '';
-      }
+      return `/assets/${imageName}.jpg`;
     },
     checkCyrillic(fieldName) {
       const fieldValue = this[fieldName];

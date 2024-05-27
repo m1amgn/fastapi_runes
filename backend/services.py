@@ -64,9 +64,9 @@ def find_ett(nums: list) -> int | None:
 
 def choose_rune(number: int, check_ett: int) -> str:
     runes = {
-        1: ['Fehu', 'Uruz', 'Thurisaz', 'Ansuz', 'Raido', 'Kenaz', 'Gebo', 'Wunjo'],
-        2: ['Hagalaz', 'Nauthis', 'Isa', 'Jera', 'Eihwas', 'Perth', 'Algiz', 'Sowulo'],
-        3: ['Teiwaz', 'Berkana', 'Ehwaz', 'Mannaz', 'Laguz', 'Inguz', 'Othala', 'Dagaz']
+        1: ['fehu', 'uruz', 'thurisaz', 'ansuz', 'raido', 'kenaz', 'gebo', 'wunjo'],
+        2: ['hagalaz', 'nauthis', 'isa', 'jera', 'eihwas', 'perth', 'algiz', 'sowulo'],
+        3: ['teiwaz', 'berkana', 'ehwaz', 'mannaz', 'laguz', 'inguz', 'othala', 'dagaz']
     }
 
     if number == 9:
