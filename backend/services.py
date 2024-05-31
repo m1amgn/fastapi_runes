@@ -70,7 +70,7 @@ def choose_rune(number: int, check_ett: int) -> str:
     }
 
     if number == 9:
-        return 'Empty'
+        return 'empty'
 
     for ett, ett_list in runes.items():
         if ett == check_ett:
@@ -153,4 +153,8 @@ def runes_calculator(day: int,
     personality_rune = choose_rune(number=sum_name_finish, check_ett=name_ett)
     gold_rune = choose_rune(number=sum_gold_finish, check_ett=gold_ett)
 
-    return {'fate_rune': fate_rune, 'personality_rune': personality_rune, 'gold_rune': gold_rune}
+    return {
+        'faterune': fate_rune,
+        'personalityrune': personality_rune,
+        'goldrune': gold_rune
+    }

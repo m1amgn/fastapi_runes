@@ -18,11 +18,6 @@ app.add_middleware(
 )
 
 
-# @app.get("/api_runes")
-# async def get_response():
-#     return 'Response'
-
-
 @app.post("/api_runes")
 async def read_item(data: Data):
     print(data)
