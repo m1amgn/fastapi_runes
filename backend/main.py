@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-origins = ['*']
+origins = ['http://localhost:8080']
 
 app.add_middleware(
     CORSMiddleware,
@@ -20,7 +20,6 @@ app.add_middleware(
 
 @app.post("/api_runes")
 async def read_item(data: Data):
-    print(data)
     runes = runes_calculator(data.birthday, data.birthmonth, data.birthyear,
                              data.firstname, data.fathername, data.secondname)
     return runes

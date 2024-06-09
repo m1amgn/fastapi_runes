@@ -6,7 +6,10 @@
     </h3>
   </div>
   <div class="container mt-5">
-    <form @submit.prevent="submitForm" class="bg-light p-4 rounded shadow-sm">
+    <form
+      ref="formTarget"
+      @submit.prevent="submitForm"
+      class="bg-light p-4 rounded shadow-sm">
       <div class="mb-3">
         <label for="firstName" class="form-label">
           Имя
@@ -56,7 +59,7 @@
     <div v-if="error" class="alert alert-danger mt-3" role="alert">
       {{ error }}
     </div>
-    <div v-if="apiData" ref="scrollTarget" class="mt-4 bg-white p-4 rounded shadow-sm">
+    <div v-if="apiData" ref="scrollTargetData" class="mt-4 bg-white p-4 rounded shadow-sm">
       <div class="images-row">
         <div v-for="(value, key) in apiData" :key="key" class="mt-4 bg-white p-4 rounded shadow-sm">
           <img :src="getImagePath(value)" :alt="value" class="img-fluid mt-3" />
@@ -76,6 +79,7 @@
           <p><strong>{{ goldRune }}</strong></p>
         </div>
       </div>
+      <button @click="scrollToForm" class="btn btn-secondary mt-3">Вернуться к форме</button>
     </div>
   </div>
 </template>
@@ -111,7 +115,7 @@ export default {
       const payload = this.getPayload();
       try {
         const apiResponse = await axios.post('http://127.0.0.1:8000/api_runes', payload);
-        const jsonResponse = await axios.get('/assets/runes_description.json');
+        const jsonResponse = await axios.get('/assets/runes-description.json');
         this.apiData = apiResponse.data;
         this.jsonData = jsonResponse.data;
         this.fateRune = this.jsonData.faterune[this.apiData.faterune];
@@ -145,14 +149,22 @@ export default {
       const fieldValue = this[fieldName];
       const cyrillicRegex = /^[а-яА-ЯЁё]+$/;
       if (!cyrillicRegex.test(fieldValue)) {
-        this.error = `Please enter only Cyrillic characters for ${fieldName}`;
+        this.error = 'Введите данные на русском языке.';
       } else {
         this.error = '';
       }
     },
     scrollToApiData() {
       this.$nextTick(() => {
-        const element = this.$refs.scrollTarget;
+        const element = this.$refs.scrollTargetData;
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    },
+    scrollToForm() {
+      this.$nextTick(() => {
+        const element = this.$refs.formTarget;
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
