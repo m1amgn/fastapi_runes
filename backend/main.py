@@ -18,7 +18,7 @@ app.add_middleware(
 )
 
 
-@app.post("/api_runes")
+@app.post("/api")
 async def read_item(data: Data):
     runes = runes_calculator(data.birthday, data.birthmonth, data.birthyear,
                              data.firstname, data.fathername, data.secondname)

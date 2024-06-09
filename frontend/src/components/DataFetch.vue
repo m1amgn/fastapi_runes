@@ -114,7 +114,7 @@ export default {
     async submitForm() {
       const payload = this.getPayload();
       try {
-        const apiResponse = await axios.post('http://127.0.0.1:8000/api_runes', payload);
+        const apiResponse = await axios.post('http://127.0.0.1:8000/api', payload);
         const jsonResponse = await axios.get('/assets/runes-description.json');
         this.apiData = apiResponse.data;
         this.jsonData = jsonResponse.data;
